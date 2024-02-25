@@ -26,6 +26,8 @@
     ];
     config = {
       allowUnfree = true;
+      # Workaround for https://github.com/nix-community/home-manager/issues/2942
+      allowUnfreePredicate = _: true;
     };
   };
 
@@ -38,6 +40,8 @@
   # Add stuff for your user as you see fit:
   # programs.neovim.enable = true;
   home.packages = with pkgs; [ 
+    chromium
+    
     curl
     wget
     neofetch
@@ -64,6 +68,9 @@
     vscode
     discord
     #steam
+
+    # Fonts
+    (pkgs.nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" ]; })
   ];
 
   # Enable home-manager and git

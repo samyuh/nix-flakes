@@ -38,9 +38,7 @@
     config.nix.registry;
 
   nix.settings = {
-    # Enable flakes and new 'nix' command
     experimental-features = "nix-command flakes";
-    # Deduplicate and optimize nix store
     auto-optimise-store = true;
   };
 
@@ -51,18 +49,9 @@
   networking.networkmanager.enable = true;
 
   time.timeZone = "Europe/Lisbon";
+  i18n.defaultLocale = "en_US.UTF-8";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  # };
-
+  # Window Manager
   programs.hyprland.enable = true;
   programs.zsh.enable = true;
 
@@ -76,36 +65,6 @@
     samuh = {
       isNormalUser = true;
       extraGroups = [ "wheel" ]; 
-      packages = with pkgs; [
-	      chromium
-
-        curl
-        wget
-        neofetch
-        kitty
-        neofetch
-        neovim
-        zsh
-        flameshot
-        mpv
-        stremio
-        brightnessctl
-        
-        # WM
-        waybar
-        wofi
-        hyprpaper
-        
-        # development
-        git
-        python3
-        
-        # Non FOOS
-        spotify
-        vscode
-        discord
-        #steam
-      ];
     };
   };
 
@@ -117,19 +76,6 @@
       PasswordAuthentication = false;
     };
   };
-
-  #fonts.packages = with pkgs; [
-  #  noto-fonts
-  #  noto-fonts-cjk
-  #  noto-fonts-emoji
-  #  liberation_ttf
-  #  fira-code
-  #  fira-code-symbols
-  #  mplus-outline-fonts.githubRelease
-  #  dina-font
-  #  proggyfonts
-  #  (nerdfonts.override { fonts = [ "FiraCode" "DroidSansMono" "NerdFontsSymbolsOnly" ]; })
-  #];
 
   # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion
   system.stateVersion = "23.11";
